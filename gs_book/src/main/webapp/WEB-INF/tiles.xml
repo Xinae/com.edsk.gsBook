@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="mainTemplate" template="/WEB-INF/jsp/gsbook/views/layout.jsp">
+		<put-attribute name="title" value="gsbook" />
+		<put-attribute name="header" value="/WEB-INF/jsp/gsbook/views/header.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/gsbook/views/footer.jsp" />	
+	</definition>
+
+	<definition name="/page/gsbookHome" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook_Home" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/gsbookHome.jsp" />
+	</definition>
+	
+	<definition name="/page/gsbookMain" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook_Home" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/gsbookMain.jsp" />
+	</definition>
+	
+	<definition name="/page/myPage" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook_Mypage" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/myPage.jsp" />
+	</definition>
+	
+	<definition name="/page/book" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook_Book_List" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/book.jsp" />
+	</definition>
+	
+	<definition name="/page/myCart" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook_Cart" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/myCart.jsp" />
+	</definition>
+	
+	<definition name="/page/bookDetail" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook_Book_Detail" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/bookDetail.jsp" />
+	</definition>
+	
+	<definition name="/page/order" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook_Book_Detail" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/order.jsp" />
+	</definition>
+	
+	<definition name="/page/memberList" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/memberList.jsp" />
+	</definition>
+	
+	<definition name="managerTemplate" template="/WEB-INF/jsp/gsbook/views/layout.jsp">
+		<put-attribute name="title" value="gsbook_manager" />
+		<put-attribute name="header" value="/WEB-INF/jsp/gsbook/views/administration.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/gsbook/views/footer.jsp" />	
+	</definition>
+	
+</tiles-definitions>
+

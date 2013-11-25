@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:component-scan base-package="gsbook">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+	<!-- For Tiles Tag -->
+	<bean name = "tileViewResolver" class = "org.springframework.web.servlet.view.UrlBasedViewResolver">
+	  	<property name = "viewClass" value = "org.springframework.web.servlet.view.tiles2.TilesView"/>
+		<property name = "order" value = "1"/>
+	  </bean>
+	<!--
+		Tiles를 적용하지 않을 View들을 위해 BeanNameViewResolver를 등록
+		UrlBaseViewResolver는 InternalResourceViewResolver와 함께 사용 할 수 없다.(하나가 실행되면 다른 하는 실행 될 확률이 0프로다.
+	  -->
+<bean
+  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  <property name="viewClass"
+   value="org.springframework.web.servlet.view.JstlView" />
+  <property name="prefix" value="/WEB-INF/jsp/" />
+  <property name="suffix" value=".jsp" />
+  <property name="cache" value="false" />
+  <property name="order" value="2" />
+ </bean>
+	
+	<!-- <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="viewResolver">
+		<property name="viewClass">
+		<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
+		</property>
+		<property name="order">
+		<value>1</value>
+		</property>
+	</bean>
+	 -->
+	
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" id="tilesConfigurer">
+		<property name="definitions">
+		<list>
+			<value>/WEB-INF/tiles.xml</value>
+		</list>
+		</property>
+	</bean>
+   <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+ 
+	<!-- /For Tiles Tag -->
+     
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="webBindingInitializer">
+            <bean class="gsbook.rte.cmmn.web.gsbookBindingInitializer"/>
+        </property>
+    </bean>
+    
+    
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="cmmn/bizError"/>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.dao.DataAccessException">cmmn/dataAccessFailure</prop>
+                <prop key="org.springframework.transaction.TransactionException">cmmn/transactionFailure</prop>
+                <prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">cmmn/bizError</prop>
+                <prop key="org.springframework.security.AccessDeniedException">cmmn/accessDenied</prop>
+            </props>
+        </property>
+    </bean>
+
+	<!-- <bean name="sqlMapClientFactory" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" p:configLocation="/resources/gsbook/spring/context-sqlMap.xml" p:dataSource-ref="dataSource"/>
+	<bean name="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientTemplate" p:sqlMapClient-ref="sqlMapClientFactory"/>
+	
+	<bean name = "memberDAO" class="gsbook.member.service.impl.GsMemberDAO">
+		<constructor-arg ref="sqlMapClient"/>
+	</bean>
+	
+	<bean name = "memberService" class="gsbook.member.service.impl.GsMemberSericeImpl">
+		<constructor-arg ref="memberDAO"/>
+	</bean>
+	
+	<bean name = "ctr" class="gsbook.memnber.web">
+		<constructor-arg ref="memberService"/>    
+    </bean> -->
+</beans>

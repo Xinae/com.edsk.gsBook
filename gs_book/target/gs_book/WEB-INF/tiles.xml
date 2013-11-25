@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="mainTemplate" template="/WEB-INF/jsp/gsbook/views/layout.jsp">
+		<put-attribute name="title" value="gsbook" />
+		<put-attribute name="header" value="/WEB-INF/jsp/gsbook/views/header.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/gsbook/views/footer.jsp" />	
+	</definition>
+
+	<definition name="/page/gsbookHome" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/gsbookHome.jsp" />
+	</definition>
+	
+	<definition name="/page/myPage" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/myPage.jsp" />
+	</definition>
+	
+	<definition name="/page/book" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/book.jsp" />
+	</definition>
+	
+	<definition name="/page/myCart" extends="mainTemplate">
+		<put-attribute name="title" value="gsbook" />
+		<put-attribute name="content" value="/WEB-INF/jsp/gsbook/page/myCart.jsp" />
+	</definition>
+	
+</tiles-definitions>
+

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/14/gs_book/src/main/webapp/WEB-INF/config/gsbook/springmvc
+END
+urlfilename-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/14/gs_book/src/main/webapp/WEB-INF/config/gsbook/springmvc/urlfilename-servlet.xml
+END
+dispatcher-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/14/gs_book/src/main/webapp/WEB-INF/config/gsbook/springmvc/dispatcher-servlet.xml
+END
